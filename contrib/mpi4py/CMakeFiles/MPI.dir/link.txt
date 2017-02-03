@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,MPI.so -o MPI.so CMakeFiles/MPI.dir/mpi4py-2.0.0/src/MPI.c.o -lpython2.7 /usr/lib/openmpi/lib/libmpi_cxx.so /usr/lib/openmpi/lib/libmpi.so -Wl,-rpath,/usr/lib/openmpi/lib: 
