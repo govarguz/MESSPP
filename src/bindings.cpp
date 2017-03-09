@@ -26,26 +26,26 @@
 #include "bindings.hpp"
 
 #include <Particle.hpp>
-#include <ParticleGroup.hpp>
+//#include <ParticleGroup.hpp>
 #include <System.hpp>
 #include <VerletList.hpp>
-#include <VerletListAdress.hpp>
-#include <VerletListTriple.hpp>
-#include <FixedSingleList.hpp>
-#include <FixedPairList.hpp>
-#include <FixedPairDistList.hpp>
-#include <FixedPairListAdress.hpp>
-#include <FixedTripleList.hpp>
-#include <FixedTripleAngleList.hpp>
-#include <FixedTripleListAdress.hpp>
-#include <FixedQuadrupleList.hpp>
-#include <FixedQuadrupleListAdress.hpp>
-#include <FixedQuadrupleAngleList.hpp>
-#include <FixedTupleList.hpp>
-#include <FixedTupleListAdress.hpp>
+//#include <VerletListAdress.hpp>
+//#include <VerletListTriple.hpp>
+//#include <FixedSingleList.hpp>
+//#include <FixedPairList.hpp>
+//#include <FixedPairDistList.hpp>
+//#include <FixedPairListAdress.hpp>
+//#include <FixedTripleList.hpp>
+//#include <FixedTripleAngleList.hpp>
+//#include <FixedTripleListAdress.hpp>
+//#include <FixedQuadrupleList.hpp>
+//#include <FixedQuadrupleListAdress.hpp>
+//#include <FixedQuadrupleAngleList.hpp>
+//#include <FixedTupleList.hpp>
+//#include <FixedTupleListAdress.hpp>
 #include <Real3D.hpp>
-#include <Quaternion.hpp>
-#include <Tensor.hpp>
+//#include <Quaternion.hpp>
+//#include <Tensor.hpp>
 #include <Int3D.hpp>
 #include <Version.hpp>
 #include <ParticleAccess.hpp>
@@ -57,32 +57,32 @@
 #include <storage/bindings.hpp>
 #include <integrator/bindings.hpp>
 #include <interaction/bindings.hpp>
-#include <analysis/bindings.hpp>
-#include <io/bindings.hpp>
+//#include <analysis/bindings.hpp>
+//#include <io/bindings.hpp>
 
 void espressopp::registerPython() {
   espressopp::Particle::registerPython();
-  espressopp::ParticleGroup::registerPython();
+  //espressopp::ParticleGroup::registerPython();
   espressopp::System::registerPython();
   espressopp::VerletList::registerPython();
-  espressopp::VerletListAdress::registerPython();
-  espressopp::VerletListTriple::registerPython();
-  espressopp::FixedSingleList::registerPython();
-  espressopp::FixedPairList::registerPython();
-  espressopp::FixedPairDistList::registerPython();
-  espressopp::FixedPairListAdress::registerPython();
-  espressopp::FixedTripleList::registerPython();
-  espressopp::FixedTripleAngleList::registerPython();
-  espressopp::FixedTripleListAdress::registerPython();
-  espressopp::FixedQuadrupleList::registerPython();
-  espressopp::FixedQuadrupleListAdress::registerPython();
-  espressopp::FixedQuadrupleAngleList::registerPython();
-  espressopp::FixedTupleList::registerPython();
-  espressopp::FixedTupleListAdress::registerPython();
+  //espressopp::VerletListAdress::registerPython();
+  //espressopp::VerletListTriple::registerPython();
+  //espressopp::FixedSingleList::registerPython();
+  //espressopp::FixedPairList::registerPython();
+  //espressopp::FixedPairDistList::registerPython();
+  //espressopp::FixedPairListAdress::registerPython();
+  //espressopp::FixedTripleList::registerPython();
+  //espressopp::FixedTripleAngleList::registerPython();
+  //espressopp::FixedTripleListAdress::registerPython();
+  //espressopp::FixedQuadrupleList::registerPython();
+  //espressopp::FixedQuadrupleListAdress::registerPython();
+  //espressopp::FixedQuadrupleAngleList::registerPython();
+  //espressopp::FixedTupleList::registerPython();
+  //espressopp::FixedTupleListAdress::registerPython();
   espressopp::Real3D::registerPython();
-  espressopp::Quaternion::registerPython();
+  //espressopp::Quaternion::registerPython();
   espressopp::RealND::registerPython();
-  espressopp::Tensor::registerPython();
+  //espressopp::Tensor::registerPython();
   espressopp::Int3D::registerPython();
   espressopp::Version::registerPython();
   espressopp::ParticleAccess::registerPython();
@@ -92,8 +92,8 @@ void espressopp::registerPython() {
   espressopp::storage::registerPython();
   espressopp::integrator::registerPython();
   espressopp::interaction::registerPython();
-  espressopp::analysis::registerPython();
-  espressopp::io::registerPython();
+  //espressopp::analysis::registerPython();
+  //espressopp::io::registerPython();
 
   log4espp::PyLogger::registerPython();
 }

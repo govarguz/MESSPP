@@ -1,6 +1,20 @@
 file(GLOB_RECURSE ESPRESSO_SOURCES *.cpp)
+file(GLOB_RECURSE NOT_ESPRESSO_SOURCES
+  esutil/GenLogger.cpp
+  iterator/unittest/*.cpp
+  interaction/unittest/*.cpp
+  unittest/*.cpp
+  analysis/unittest/*.cpp
+  esutil/unittest/*.cpp
+  storage/unittest/*.cpp
+  bc/unittest/*.cpp
+  integrator/unittest/*.cpp
+)
+list(REMOVE_ITEM ESPRESSO_SOURCES ${NOT_ESPRESSO_SOURCES})
 
 add_custom_target(gitversion COMMAND ${CMAKE_COMMAND} -DTOP_SOURCE_DIR="${CMAKE_SOURCE_DIR}" -P ${CMAKE_MODULE_PATH}/gitversion.cmake)
+
+list(REMOVE_ITEM ESPRESSO_SOURCES ${NOT_ESPRESSO_SOURCES})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/acconfig.hpp.cmakein
   ${CMAKE_CURRENT_BINARY_DIR}/acconfig.hpp)

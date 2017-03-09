@@ -31,7 +31,7 @@
 #include <boost/signals2.hpp>
 #include <list>
 #include "log4espp.hpp"
-#include "FixedTupleListAdress.hpp"
+//#include "FixedTupleListAdress.hpp"
 #include "Cell.hpp"
 #include "Buffer.hpp"
 #include "types.hpp"
@@ -43,7 +43,7 @@ namespace espressopp {
     class Storage : public SystemAccess {
     public:
       typedef boost::unordered_map <longint, Particle*> IdParticleMap;
-      typedef std::list<Particle> ParticleListAdr;
+      //typedef std::list<Particle> ParticleListAdr;
 
       Storage(shared_ptr<class System> system);
       virtual ~Storage();
@@ -90,14 +90,14 @@ namespace espressopp {
       with the given id already exists.  This is left to the parallel
       front end.
       */
-      Particle* addAdrATParticle(longint id, const Real3D& pos, const Real3D& VPpos);
+      ///Particle* addAdrATParticle(longint id, const Real3D& pos, const Real3D& VPpos);
 
       // similar as above, but only called from fixedtuplelist when rebuilding the tuples
-      Particle* addAdrATParticleFTPL(Particle n);
+      ///Particle* addAdrATParticleFTPL(Particle n);
 
       // remove an AdResS AT particle - it is removed from the vector and from the map
       // called from FTPL
-      void removeAdrATParticle(longint id);
+      ///void removeAdrATParticle(longint id);
 
 
       //Particle* addParticle(longint id, const Real3D& pos, int type);
@@ -131,21 +131,21 @@ namespace espressopp {
         IdParticleMap::iterator it = localParticles.find(id);
 
         // for AdResS
-        if (it != localParticles.end() && !(it->second->ghost())) {
-            return it->second;
-        }
-        else {
-            return lookupAdrATParticle(id);
-        }
+        ///if (it != localParticles.end() && !(it->second->ghost())) {
+        ///    return it->second;
+        ///}
+        ///else {
+        ///    return lookupAdrATParticle(id);
+        ///}
       }
 
 
       /** Lookup whether data for a given adress real AT particle is available on this node.
       \return 0 if the particle wasn't available, the pointer to the Particle, if it was. */
-      Particle* lookupAdrATParticle(longint id) {
-        IdParticleMap::iterator it = localAdrATParticles.find(id);
-        return (it != localAdrATParticles.end()) ? it->second : 0;
-      }
+      ///Particle* lookupAdrATParticle(longint id) {
+      ///  IdParticleMap::iterator it = localAdrATParticles.find(id);
+      ///  return (it != localAdrATParticles.end()) ? it->second : 0;
+      ///}
 
 
 
@@ -157,7 +157,7 @@ namespace espressopp {
     // returns number of ghosts
       longint getNGhostParticles() const;
       //returns number of atomistic adress particles
-      longint getNAdressParticles() const;
+      //longint getNAdressParticles() const;
 
       /** insert the particles in the given storage into the current one.
 	  This is mainly used to switch from one storage to another.
@@ -245,17 +245,18 @@ namespace espressopp {
 
 
       // for AdResS
-      void setFixedTuplesAdress(shared_ptr<FixedTupleListAdress> _fixedtupleList){
-          fixedtupleList = _fixedtupleList;
-      }
-      shared_ptr<FixedTupleListAdress> getFixedTuples() { return fixedtupleList; }
-      ParticleList&    getAdrATParticles()  { return AdrATParticles; }
+      ///void setFixedTuplesAdress(shared_ptr<FixedTupleListAdress> _fixedtupleList){
+      ///    fixedtupleList = _fixedtupleList;
+      ///}
+      ///shared_ptr<FixedTupleListAdress> getFixedTuples() { return fixedtupleList; }
+      ///ParticleList&    getAdrATParticles()  { return AdrATParticles; }
       //ParticleListAdr& getAdrATParticlesG() { return AdrATParticlesG; }
-      std::list<ParticleList>& getAdrATParticlesG() { return AdrATParticlesG; }
+      ///std::list<ParticleList>& getAdrATParticlesG() { return AdrATParticlesG; }
 
 
       /* variant for python that ignores the return value */
-      bool pyAddParticle(longint id, const Real3D& pos);
+      ///bool pyAddParticle(longint id, const Real3D& pos);
+
 
       static void registerPython();
 
@@ -347,7 +348,7 @@ namespace espressopp {
       void recvParticles(ParticleList &, longint node);
 
       // update the id->local particle map for the given cell
-      void updateLocalParticles(ParticleList &, bool adress = false);
+      void updateLocalParticles(ParticleList &);
 
       /* remove this particle from local particles.  If weak is true,
 	 the information is only removed if the pointer is actually at
@@ -363,7 +364,7 @@ namespace espressopp {
        */
       void updateInLocalParticles(Particle*, bool weak = false);
 
-      void updateInLocalAdrATParticles(Particle *);
+      ///void updateInLocalAdrATParticles(Particle *);
 
       // reserve space for nCells cells
       void resizeCells(longint nCells);
@@ -373,7 +374,7 @@ namespace espressopp {
 
       // append a ghost AT adress particle to a list, without updating AdrATParticles
       //Particle* appendUnindexedAdrParticle(ParticleListAdr &, Particle &);
-      Particle* appendUnindexedAdrParticle(ParticleList &, Particle &);
+      ///Particle* appendUnindexedAdrParticle(ParticleList &, Particle &);
 
 
       void appendParticleListToGhosts(ParticleList &l);
@@ -402,13 +403,13 @@ namespace espressopp {
 
 
       // used for AdResS
-      shared_ptr<FixedTupleListAdress> fixedtupleList;
-      void clearAdrATParticlesG() {
+      ///shared_ptr<FixedTupleListAdress> fixedtupleList;
+      ///void clearAdrATParticlesG() {
           //std::cout << "size of AdrATParticlesG: " << AdrATParticlesG.size() << ", clearing... \n";
-          AdrATParticlesG.clear();
+      ///    AdrATParticlesG.clear();
           //std::cout << " new size of AdrATParticlesG: " << AdrATParticlesG.size() << "\n";
 
-      }
+      ///}
       
       void savePosition(size_t id);
       void restorePositions();
@@ -420,13 +421,13 @@ namespace espressopp {
 
 
       // AdResS atomistic particles (they are not stored in cells!)
-      ParticleList AdrATParticles; // local atomistic real adress particles
+      ///ParticleList AdrATParticles; // local atomistic real adress particles
       //ParticleListAdr AdrATParticlesG; // ghosts, use list instead of vector to avoid memory reallocation
-      std::list<ParticleList> AdrATParticlesG;
+      ///std::list<ParticleList> AdrATParticlesG;
 
 
       // map particle id to Particle * for all adress real AT particles on this node
-      boost::unordered_map<longint, Particle*> localAdrATParticles;
+      ///boost::unordered_map<longint, Particle*> localAdrATParticles;
       
       // we need to snap shot the particle coordinates
       std::map< size_t, Real3D > savedRealPositions;

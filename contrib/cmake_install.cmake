@@ -1,4 +1,4 @@
-# Install script for directory: /home/warita/messpp/contrib
+# Install script for directory: /data/pckr196/vargas/MESSPP2/contrib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,13 +29,13 @@ endif()
 
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
+  set(CMAKE_INSTALL_SO_NO_EXE "0")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/warita/messpp/contrib/boost/cmake_install.cmake")
-  include("/home/warita/messpp/contrib/mpi4py/cmake_install.cmake")
+  include("/data/pckr196/vargas/MESSPP2/contrib/boost/cmake_install.cmake")
+  include("/data/pckr196/vargas/MESSPP2/contrib/mpi4py/cmake_install.cmake")
 
 endif()
 

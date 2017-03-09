@@ -7,6 +7,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 enable_language(C)
 enable_language(CXX)
+
 enable_testing()
 
 ######################################################################
@@ -116,6 +117,9 @@ find_library(PYTHON_LIBRARIES
              NAMES python${PYTHON_VERSION}
              PATHS ${PYTHON_LIBDIR}  )
 
+if(NOT PYTHON_LIBRARIES)
+  message(FATAL_ERROR "Python libraries not found!")
+endif(NOT PYTHON_LIBRARIES)
 message(STATUS "PYTHON_LIBRARIES = ${PYTHON_LIBRARIES}")
 
 mark_as_advanced(PYTHON_INCLUDE_PATH PYTHON_LIBRARIES)
@@ -176,6 +180,7 @@ if (EXTERNAL_MPI4PY)
 else (EXTERNAL_MPI4PY)
   set (TEST_ENV "PYTHONPATH=${CMAKE_BINARY_DIR}:${CMAKE_BINARY_DIR}/contrib:$ENV{PYTHONPATH}")
 endif (EXTERNAL_MPI4PY)
+#add_subdirectory(testsuite)
 
 add_custom_target(symlink ALL COMMENT "Creating symlink")
 add_custom_command(TARGET symlink COMMAND ${CMAKE_COMMAND} -E create_symlink
@@ -248,5 +253,5 @@ if ( SPHINX_EXECUTABLE )
 
    message ( STATUS "Generate LaTeX manual via ${SPHINX_EXECUTABLE}: make ug-pdf")
 else ( SPHINX_EXECUTABLE )
-    message ( WARNING "Not building user documentation because Doxygen not found.")
+    message ( WARNING "Not building user documentation because Sphinx not found.")
 endif ( SPHINX_EXECUTABLE )

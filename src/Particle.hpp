@@ -25,8 +25,10 @@
 #define _PARTICLE_HPP
 
 #include "types.hpp"
+#include "Single.hpp"
 #include "Triple.hpp"
 #include "Quadruple.hpp"
+//#include <vector>
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/list.hpp>
 #include <boost/mpi.hpp>
