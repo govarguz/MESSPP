@@ -28,7 +28,7 @@ pmiimport('espressopp')
 import _espressopp
 from espressopp.Exceptions import *
 from espressopp.Real3D import *
-from espressopp.Quaternion import *
+#from espressopp.Quaternion import *
 from espressopp.RealND import *
 
 from espressopp.Tensor import *
@@ -38,21 +38,21 @@ from espressopp.ParticleGroup import *
 from espressopp.System import *
 from espressopp.VerletList import *
 from espressopp.VerletListTriple import *
-from espressopp.VerletListAdress import *
-from espressopp.FixedSingleList import *
+#from espressopp.VerletListAdress import *
+#from espressopp.FixedSingleList import *
 from espressopp.FixedPairList import *
-from espressopp.FixedPairDistList import *
-from espressopp.FixedPairListAdress import *
-from espressopp.FixedTripleList import *
-from espressopp.FixedTripleAngleList import *
-from espressopp.FixedTripleListAdress import *
-from espressopp.FixedQuadrupleList import *
-from espressopp.FixedQuadrupleListAdress import *
-from espressopp.FixedQuadrupleAngleList import *
-from espressopp.FixedTupleList import *
-from espressopp.FixedTupleListAdress import *
-from espressopp.MultiSystem import *
-from espressopp.ParallelTempering import *
+#from espressopp.FixedPairDistList import *
+#from espressopp.FixedPairListAdress import *
+#from espressopp.FixedTripleList import *
+#from espressopp.FixedTripleAngleList import *
+#from espressopp.FixedTripleListAdress import *
+#from espressopp.FixedQuadrupleList import *
+#from espressopp.FixedQuadrupleListAdress import *
+#from espressopp.FixedQuadrupleAngleList import *
+#from espressopp.FixedTupleList import *
+#from espressopp.FixedTupleListAdress import *
+#from espressopp.MultiSystem import *
+#from espressopp.ParallelTempering import *
 from espressopp.Version import *
 from espressopp.PLogger import *
 
@@ -62,7 +62,7 @@ nan=float("nan")
 auto='auto'
 
 # fetch the different subpackages
-from espressopp import esutil, bc, storage, integrator, interaction, analysis, tools, standard_system, external, check, io
+from espressopp import esutil, bc, storage, integrator, interaction, analysis, tools, io#, standard_system, external, check
 
 if pmi.isController :
     # make sure that the workers exit when the script ends

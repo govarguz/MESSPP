@@ -186,7 +186,7 @@ namespace espressopp {
            }
        }
        
-       if (adress && absCapping){
+       /*if (adress && absCapping){
          real capfsq2 = absCapForce * absCapForce;
          ParticleList& adrATparticles = system.storage->getAdrATParticles();
          for (std::vector<Particle>::iterator it = adrATparticles.begin();
@@ -199,7 +199,7 @@ namespace espressopp {
                 //std::cout << "AdResS Force Capping applied on particle " << it->getId() << "\n";
              }                     
          }
-       }       
+       }       */
      }
 
     /****************************************************

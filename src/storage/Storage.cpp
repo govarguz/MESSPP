@@ -20,7 +20,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-#include "python.hpp"
+#include "python.hpp" //N
 
 //#include <algorithm>
 
@@ -55,8 +55,8 @@ namespace espressopp {
 
     Storage::Storage(shared_ptr< System > system)
       : SystemAccess(system),
-        inBuffer(*system->comm),
-        outBuffer(*system->comm)
+        inBuffer(*system->comm), //N
+        outBuffer(*system->comm) //N
     {
       //logger.setLevel(log4espp::Logger::TRACE);
       LOG4ESPP_INFO(logger, "Created new storage object for a system, has buffers");
@@ -98,11 +98,11 @@ namespace espressopp {
       }
       return cnt;
     }
-    longint Storage::getNAdressParticles() const {
+    /*longint Storage::getNAdressParticles() const {
           longint cnt = 0;
             return localAdrATParticles.size();
     }
-
+*/
     python::list Storage::getRealParticleIDs() {
       python::list pids;
       for (CellListIterator cit(realCells); !cit.isDone(); ++cit) {
@@ -150,7 +150,7 @@ namespace espressopp {
         cit->setPos(pos);
       }
     }
-
+/*
     void Storage::removeAdrATParticle(longint id) {
 
     	if (localAdrATParticles.find(id) == localAdrATParticles.end()) {
@@ -182,7 +182,7 @@ namespace espressopp {
     		Particle *np = &(AdrATParticles[i]);
     		updateInLocalAdrATParticles(np);
     	}
-	}
+	}*/
 
     // TODO find out why python crashes if inlined
     //inline
@@ -228,21 +228,21 @@ namespace espressopp {
     }
 
     inline
-    void Storage::updateInLocalAdrATParticles(Particle *p) {
+    /*void Storage::updateInLocalAdrATParticles(Particle *p) {
           localAdrATParticles[p->id()] = p;
-    }
+    }*/
 
-    void Storage::updateLocalParticles(ParticleList &list, bool adress) {
-      if (adress) {
-          for (ParticleList::Iterator it(list); it.isValid(); ++it) {
-              updateInLocalAdrATParticles(&(*it));
-          }
-      }
-      else {
+    void Storage::updateLocalParticles(ParticleList &list) {
+      ///if (adress) {
+          ///for (ParticleList::Iterator it(list); it.isValid(); ++it) {
+              ///updateInLocalAdrATParticles(&(*it));
+          ///}
+      ///}
+      ///else {
           for (ParticleList::Iterator it(list); it.isValid(); ++it) {
               updateInLocalParticles(&(*it));
           }
-      }
+     /// }
     }
 
     void Storage::resizeCells(longint nCells) {
@@ -321,7 +321,7 @@ namespace espressopp {
     }
     
 
-    Particle* Storage::addAdrATParticle(longint id, const Real3D& p, const Real3D& _vpp) {
+    /*Particle* Storage::addAdrATParticle(longint id, const Real3D& p, const Real3D& _vpp) {
 
       if (!checkIsRealParticle(id, _vpp)) {
     	return static_cast< Particle* >(0);
@@ -369,25 +369,25 @@ namespace espressopp {
     }
 
     // this is called from fixedtuplelist only!
-    Particle* Storage::addAdrATParticleFTPL(Particle n) {
+    ///Particle* Storage::addAdrATParticleFTPL(Particle n) {
 
 	  // see whether the array was resized; STL hack
-	  Particle *begin = &AdrATParticles.front();
+	  ///Particle *begin = &AdrATParticles.front();
 
-	  AdrATParticles.push_back(n);
-	  Particle* local = &AdrATParticles.back();
+	  ///AdrATParticles.push_back(n);
+	  ///Particle* local = &AdrATParticles.back();
 
-	  if (begin != &AdrATParticles.front()) {
-		  updateLocalParticles(AdrATParticles, true);
-	  }
-	  else {
-		  updateInLocalAdrATParticles(local);
-	  }
+	  ///if (begin != &AdrATParticles.front()) {
+	  ///	  updateLocalParticles(AdrATParticles, true);
+	  ///}
+	  ///else {
+	  ///	  updateInLocalAdrATParticles(local);
+	  ///}
 
-	  return local;
-	}
+	  ///return local;
+	///}
 
-
+*/
     /*Particle* Storage::addParticle(longint id, const Real3D& p, int type) {
         Particle* pt = addParticle(id, p);
         pt->setType(type);
@@ -401,7 +401,7 @@ namespace espressopp {
     }
 
     //Particle *Storage::appendUnindexedAdrParticle(ParticleListAdr &l, Particle &part)
-    Particle *Storage::appendUnindexedAdrParticle(ParticleList &l, Particle &part) {
+   /* Particle *Storage::appendUnindexedAdrParticle(ParticleList &l, Particle &part) {
       l.push_back(part);
       return &l.back();
     }
@@ -409,7 +409,7 @@ namespace espressopp {
     void Storage::appendParticleListToGhosts(ParticleList &l) {
       AdrATParticlesG.push_back(l);
     }
-
+*/
 
 
 
@@ -757,8 +757,8 @@ namespace espressopp {
 	    .def("addParticle", &Storage::addParticle, return_value_policy< reference_existing_object >())
 	    .def("removeParticle", &Storage::removeParticle)
 	    .def("removeAllParticles", &Storage::removeAllParticles)
-        .def("addAdrATParticle", &Storage::addAdrATParticle, return_value_policy< reference_existing_object >())
-        .def("setFixedTuplesAdress", &Storage::setFixedTuplesAdress)
+        ///.def("addAdrATParticle", &Storage::addAdrATParticle, return_value_policy< reference_existing_object >())
+        ///.def("setFixedTuplesAdress", &Storage::setFixedTuplesAdress)
         //.def("addParticle", &Storage::addParticle, return_value_policy< reference_existing_object >())
 	    .def("lookupLocalParticle", &Storage::lookupLocalParticle, return_value_policy< reference_existing_object >())
 	    .def("lookupRealParticle", &Storage::lookupRealParticle, return_value_policy< reference_existing_object >())

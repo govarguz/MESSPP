@@ -55,8 +55,8 @@ namespace espressopp {
         void setTemperature(real temperature);
         real getTemperature();
 
-        void setAdress(bool _adress);
-        bool getAdress();
+        ///void setAdress(bool _adress);
+        ///bool getAdress();
 
         void initialize();
 
@@ -85,13 +85,13 @@ namespace espressopp {
       private:
 
         boost::signals2::connection _initialize, _heatUp, _coolDown,
-                                       _thermalize, _thermalizeAdr;
+                                       _thermalize; ///, _thermalizeAdr;
 
         void frictionThermo(class Particle&);
 
         // this connects thermalizeAdr
-        void enableAdress();
-        bool adress;
+        /// void enableAdress();
+        ///bool adress;
 
         /** pid eclusion list */
         std::set<longint> exclusions;

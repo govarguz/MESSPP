@@ -44,7 +44,7 @@ namespace espressopp {
       gamma  = 0.0;
       temperature = 0.0;
 
-      adress = false;
+      ///adress = false;
       exclusions.clear();
 
       if (!system->rng) {
@@ -67,7 +67,7 @@ namespace espressopp {
     {
       return gamma;
     }
-
+/*
     void LangevinThermostat::setAdress(bool _adress){
         adress = _adress;
     }
@@ -75,7 +75,7 @@ namespace espressopp {
     bool LangevinThermostat::getAdress(){
         return adress;
     }
-
+*/
     void LangevinThermostat::setTemperature(real _temperature)
     {
       temperature = _temperature;
@@ -97,7 +97,7 @@ namespace espressopp {
         _heatUp.disconnect();
         _coolDown.disconnect();
         _thermalize.disconnect();
-        _thermalizeAdr.disconnect();
+       /// _thermalizeAdr.disconnect();
 
     }
 
@@ -113,14 +113,14 @@ namespace espressopp {
         _coolDown = integrator->recalc2.connect(
                 boost::bind(&LangevinThermostat::coolDown, this));
 
-        if (adress) {
-            _thermalizeAdr = integrator->aftCalcF.connect(
-                boost::bind(&LangevinThermostat::thermalizeAdr, this));
-        }
-        else {
+        ///if (adress) {
+            ///_thermalizeAdr = integrator->aftCalcF.connect(
+            ///    boost::bind(&LangevinThermostat::thermalizeAdr, this));
+        ///}
+        ///else {
             _thermalize = integrator->aftCalcF.connect(
                 boost::bind(&LangevinThermostat::thermalize, this));
-        }
+       /// }
     }
 
 
@@ -143,7 +143,7 @@ namespace espressopp {
     }
 
     // for AdResS
-    void LangevinThermostat::thermalizeAdr()
+    /*void LangevinThermostat::thermalizeAdr()
     {
       LOG4ESPP_DEBUG(theLogger, "thermalize");
 
@@ -160,7 +160,7 @@ namespace espressopp {
         }
 
       }
-    }
+    }*/
 
     void LangevinThermostat::frictionThermo(Particle& p)
     {
@@ -229,7 +229,7 @@ namespace espressopp {
         .def("connect", &LangevinThermostat::connect)
         .def("disconnect", &LangevinThermostat::disconnect)
         .def("addExclpid", &LangevinThermostat::addExclpid)
-        .add_property("adress", &LangevinThermostat::getAdress, &LangevinThermostat::setAdress)
+        ///.add_property("adress", &LangevinThermostat::getAdress, &LangevinThermostat::setAdress)
         .add_property("gamma", &LangevinThermostat::getGamma, &LangevinThermostat::setGamma)
         .add_property("temperature", &LangevinThermostat::getTemperature, &LangevinThermostat::setTemperature)
         ;

@@ -20,9 +20,9 @@
 
 
 r"""
-**************************************
-**Storage** - Storage Object
-**************************************
+**************************
+espressopp.storage.Storage
+**************************
 
 This is the base class for all storage objects.
 All derived classes implement at least the following methods:
@@ -215,16 +215,16 @@ class StorageLocal(object):
       if not (pmi._PMIComm and pmi._PMIComm.isActive()) or pmi._MPIcomm.rank in pmi._PMIComm.getMPIcpugroup():
         return self.cxxclass.removeAllParticles(self)
             
-    def addAdrATParticle(self, pid, *args):
+'''    def addAdrATParticle(self, pid, *args):
         if not (pmi._PMIComm and pmi._PMIComm.isActive()) or pmi._MPIcomm.rank in pmi._PMIComm.getMPIcpugroup():
             self.cxxclass.addAdrATParticle(
                 self, pid, toReal3DFromVector(*args)
                 )
-    
-    def setFixedTuplesAdress(self, fixedtuples):
+'''    
+'''    def setFixedTuplesAdress(self, fixedtuples):
         if pmi.workerIsActive():
             self.cxxclass.setFixedTuplesAdress(self, fixedtuples)
-    
+'''    
     def getParticle(self, pid):
         if not (pmi._PMIComm and pmi._PMIComm.isActive()) or pmi._MPIcomm.rank in pmi._PMIComm.getMPIcpugroup():
             return ParticleLocal(pid, self)
@@ -305,7 +305,7 @@ class StorageLocal(object):
                         last_pos = pos
                     else:
                         #print "%d:  addAdrATparticle %d, pos %f, %f, %f, last_pos %f, %f, %f"%(pmi._MPIcomm.rank,id,pos[0],pos[1],pos[2],last_pos[0], last_pos[1], last_pos[2])
-                        storedParticle = self.cxxclass.addAdrATParticle(self, id, pos, last_pos)
+                        i#storedParticle = self.cxxclass.addAdrATParticle(self, id, pos, last_pos)
                 else:
                     #print "%d:  addParticle %d, last_pos=pos %f, %f, %f"%(pmi._MPIcomm.rank,id,pos[0], pos[1], pos[2])
                     storedParticle = self.cxxclass.addParticle(self, id, pos)
@@ -409,7 +409,7 @@ if pmi.isController:
     class Storage(object):
         __metaclass__ = pmi.Proxy
         pmiproxydefs = dict(
-            pmicall = [ "decompose", "addParticles", "setFixedTuplesAdress", "removeAllParticles"],
+            pmicall = [ "decompose", "addParticles", "removeAllParticles"],
             pmiproperty = [ "system" ],
             pmiinvoke = ["getRealParticleIDs", "printRealParticles"]
             )
@@ -442,7 +442,7 @@ if pmi.isController:
           else:
             print "WARNING: Particle ", pid, " does not exist and was not modified"
           
-
+'''
         def addAdrATParticle(self, pid, *args):
           if( self.particleExists(pid) ):
             print "WARNING: Particle ", pid, " already exists. Therefore it was not added."
@@ -450,7 +450,7 @@ if pmi.isController:
           else:
             pmi.call(self.pmiobject, 'addAdrATParticle', pid, *args)
             return Particle(pid, self)
-        
+'''        
         #def setFixedTuples(self, tuples):
         #    pmi.call(self.pmiobject, 'setFixedTuples', tuples)
 

@@ -20,8 +20,8 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
-#include "DomainDecompositionNonBlocking.hpp"
-#include "DomainDecompositionAdress.hpp"
+//#include "DomainDecompositionNonBlocking.hpp"
+//#include "DomainDecompositionAdress.hpp"
 #include "DomainDecomposition.hpp"
 #include "Storage.hpp"
 #include "bindings.hpp"
@@ -31,8 +31,8 @@ namespace espressopp {
     void registerPython() {
       Storage::registerPython();
       DomainDecomposition::registerPython();
-      DomainDecompositionNonBlocking::registerPython();
-      DomainDecompositionAdress::registerPython();
+      //DomainDecompositionNonBlocking::registerPython();
+      //DomainDecompositionAdress::registerPython();
     }
   }
 }

@@ -20,9 +20,9 @@
 
 
 r"""
-********************************************
-**espressopp.integrator.LangevinThermostat**
-********************************************
+****************************************
+espressopp.integrator.LangevinThermostat
+****************************************
 
 Langevin Thermostat
 
@@ -72,6 +72,6 @@ if pmi.isController :
         __metaclass__ = pmi.Proxy
         pmiproxydefs = dict(
             cls =  'espressopp.integrator.LangevinThermostatLocal',
-            pmiproperty = [ 'gamma', 'temperature', 'adress' ],
+            pmiproperty = [ 'gamma', 'temperature' ],
             pmicall = [ 'addExclusions' ]
             )
